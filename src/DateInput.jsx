@@ -228,7 +228,8 @@ export default class DateInput extends PureComponent {
       options.day = 'numeric';
     }
 
-    return getFormatter(options);
+    const formatterFunction = this.props.formatter || getFormatter;
+    return formatterFunction(options);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -632,4 +633,5 @@ DateInput.propTypes = {
   ]),
   yearAriaLabel: PropTypes.string,
   yearPlaceholder: PropTypes.string,
+  formatter: PropTypes.func,
 };
